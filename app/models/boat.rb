@@ -44,6 +44,7 @@ class Boat < ActiveRecord::Base
 
   def self.non_sailboats
     # where("id NOT IN (?)", self.sailboats.pluck(:id))
+    includes('classifications').where(classifications: {name: 'Sailboat'})
   end
 
   def self.longest
