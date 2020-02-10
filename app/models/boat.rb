@@ -4,23 +4,19 @@ class Boat < ActiveRecord::Base
   has_many    :classifications, through: :boat_classifications
 
   def self.first_five
-    # all.limit(5)
-    limit(5)
+    all.limit(5)
   end
 
   def self.dinghy
-    # where("length < 20")
-    where(Boat.arel_table[:length].lt(20))
+    where("length < 20")
   end
 
   def self.ship
-    # where("length >= 20")
-    where(Boat.arel_table[:length].gt(20))
+    where("length >= 20")
   end
 
   def self.last_three_alphabetically
-    # all.order(name: :desc).limit(3)
-    order(name: :desc).limit(3)
+    all.order(name: :desc).limit(3)
   end
 
   def self.without_a_captain
